@@ -251,7 +251,7 @@ cat("======================================================\n")
 #....................................................................................
 
 rmd_data = knitr::knit_expand(file = 'R_templates/functions_template.Rmd',
-                              doc_title = glue::glue("From  {DATE}  to  {as.character(date_end)}  ( Fitbit Visualizations )"),
+                              doc_title = glue::glue("{DATE}  to  {as.character(date_end)}  ( Fitbit Visualizations )"),
                               path_heart_dat = basename(path_heart_dat),
                               sleep_time_begins = sleep_time_begins,
                               sleep_time_ends = sleep_time_ends,

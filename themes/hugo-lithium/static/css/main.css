@@ -30,7 +30,7 @@ code {
 }
 
 img {
-  max-width: 100%;
+  max-width: 120%;
 }
 
 .wrapper {
@@ -95,7 +95,7 @@ img {
 }
 
 .content {
-  max-width: 700px;
+  max-width: 1000px;
   margin: 40px auto 10px;
   padding: 0 15px;
   font-size: 16px;

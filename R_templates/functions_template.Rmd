@@ -4,8 +4,8 @@ title: "{{doc_title}}"
 
 ```{r setup, echo = FALSE}
 
-knitr::opts_chunk$set(fig.width = 8,
-                      fig.height = 8, 
+knitr::opts_chunk$set(fig.width = 12,
+                      fig.height = 10, 
                       fig.align = "center",
                       warning = FALSE, 
                       message = FALSE,
@@ -19,7 +19,7 @@ date_end = "{{date_end}}"
 verbose = as.logical({{verbose}})
 
 CRS_value = as.integer({{CRS_value}})
-asc_desc_linestring = as.character({{asc_desc_linestring}})
+asc_desc_linestring = as.character("{{asc_desc_linestring}}")
 
 ```
 

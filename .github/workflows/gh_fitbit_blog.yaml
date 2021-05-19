@@ -47,6 +47,10 @@ on:
 #  - a boolean in form of a character ('TRUE' or 'FALSE'). If TRUE split in peak of the data
 #  - a lubridate::hms('17:05:00') object in form of a character string, i.e. "17H 5M 0S"
 #    The GPS data will be split based on the input lubridate time point
+#
+# As mentioned in
+#       https://github.com/aws-actions/configure-aws-credentials/issues/9#issuecomment-569370732
+# the "awscli" is available when using "aws-actions/configure-aws-credentials@v1"
 #.............................................................................................................................................
 
 name: deployblog
@@ -75,10 +79,10 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
-      - name: test if awscli is available
-        run: aws s3 ls
+      # - name: test if awscli is available
+      #   run: aws s3 ls
       - name: Install required packages
-        run: Rscript -e 'install.packages(c("fitbitViz", "CopernicusDEM", "glue", "rmarkdown", "blogdown"))'
+        run: Rscript -e 'install.packages(c("fitbitViz", "CopernicusDEM", "DT", "glue", "rmarkdown", "blogdown"))'
       - name: install hugo
         run: Rscript -e 'blogdown::install_hugo()'
 
