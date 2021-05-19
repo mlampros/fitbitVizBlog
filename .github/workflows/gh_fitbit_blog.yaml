@@ -81,8 +81,10 @@ jobs:
           aws-region: eu-central-1
       # - name: test if awscli is available
       #   run: aws s3 ls
+      - name: Install ImageMagick
+        run: brew install imagemagick
       - name: Install required packages
-        run: Rscript -e 'install.packages(c("fitbitViz", "CopernicusDEM", "DT", "glue", "rmarkdown", "blogdown"))'
+        run: Rscript -e 'install.packages(c("fitbitViz", "CopernicusDEM", "DT", "magick", "glue", "rmarkdown", "blogdown"))'
       - name: install hugo
         run: Rscript -e 'blogdown::install_hugo()'
 
