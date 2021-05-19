@@ -1,0 +1,30 @@
+
+# #...........................................................................................
+# # References to run a docker image in Github actions
+# #       - https://stackoverflow.com/a/58521709/8302386
+# #       - https://stackoverflow.com/a/60202672/8302386
+# #       - https://github.com/sshniro/actions-test-repo/blob/master/.github/workflows/zap.yml
+# #...........................................................................................
+#
+# on:
+#   push:
+#     branches: master
+#
+# jobs:
+#   container:
+#     runs-on: ubuntu-latest
+#     container:
+#       image: rocker/r-rmd
+#       options: --user root -v ${{ github.workspace }}:/docs/:rw
+#     steps:
+#       - uses: actions/checkout@v2
+#
+#       - name: example command1
+#         run: pwd && ls -l
+#       - name: example command2
+#         run: Rscript -e "require(rmarkdown)"
+#       - name: example command3
+#         run: Rscript -e "getwd()"
+#       - name: example command4
+#         run: Rscript -e "ls()"
+#         # run: Rscript -e "rmarkdown::render_site()"

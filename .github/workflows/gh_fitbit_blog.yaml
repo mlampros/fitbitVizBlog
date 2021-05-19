@@ -1,0 +1,131 @@
+
+#...........................................................................................................................
+# References:
+#               - https://github.com/orchid00/actions_sandbox/issues/41#issuecomment-816970613
+#               - https://github.com/murraycadzow/test_blogdown/blob/master/.github/workflows/deploy_blogdown.yml
+#               - https://blog--simonpcouch.netlify.app/blog/r-github-actions-commit/
+#               - https://github.com/simonpcouch/scheduled-commit-action/blob/master/.github/workflows/schedule-commit.yaml
+#               - https://github.community/t/github-actions-bot-email-address/17204
+#               - https://www.etiennebacher.com/posts/2021-03-19-use-github-actions-with-r-markdown-and-distill/
+#               - https://github.com/pbatey/flexdashboard-example
+#               - https://ramikrispin.github.io/2020/09/deploying-flexdashboard-on-github-pages/
+#
+# It is also possible to create a "single" (not a multi-page) Github Pages by including
+#      - a 'docs' directory in the root of the repository
+#      - by converting the .Rmd to .html then rename the .html file to 'index.html' and adding the 'index.html' to 'docs'
+#      - by including a '.nojekyll' file inside the 'docs' directory
+# then just push to github. Reference:
+#  https://jupyterbook.org/publish/gh-pages.html#option-1-copy-and-paste-your-books-build-contents-into-a-new-folder
+#...........................................................................................................................
+
+
+#............................................................................................
+# run a cron-job every week (say, on Monday), see,
+# https://crontab.guru/examples.html
+# https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
+#............................................................................................
+
+on:
+  schedule:
+    - cron: "0 5 * * MON"
+  push:
+    branches: master
+
+
+#.............................................................................................................................................
+# Create every week an updated .Rmd file (including the .Rds data) and push these files to a separate directory of the "/content/post" folder
+# Before building the 'hugo' website use "build_rmd = TRUE" otherwise the index of website won't be built, see:
+#    https://github.com/rstudio/blogdown/blob/master/NEWS.md#new-features-3
+# since blogdown version==0.21 the blogdown::build_site() no longer recompiles R Markdown files by default
+# For major Changes in Blogdown (especially from version >=0.21), see:  https://github.com/rstudio/blogdown/blob/master/NEWS.md
+#
+# To commit and push the changes I use the default setting of the github actions repo
+# Because I received an error I've added "${{ github.event.pull_request.head.ref }}"
+#
+# The "asc_desc_linestring" parameter must be one of the following:
+#  - an empty string ( "" ). In this case a sinle color Linestring will be plotted
+#  - a boolean in form of a character ('TRUE' or 'FALSE'). If TRUE split in peak of the data
+#  - a lubridate::hms('17:05:00') object in form of a character string, i.e. "17H 5M 0S"
+#    The GPS data will be split based on the input lubridate time point
+#.............................................................................................................................................
+
+name: deployblog
+
+jobs:
+  blogdown:
+    name: Render-Blog
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+        if: github.event_name == 'pull_request'
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/checkout@v2
+        if: github.event_name == 'push'
+        with:
+          fetch-depth: 0
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Install rmarkdown
+        run: Rscript -e 'install.packages(c("fitbitViz", "glue", "rmarkdown", "blogdown"))'
+      - name: install hugo
+        run: Rscript -e 'blogdown::install_hugo()'
+
+      - name: Fitbit Parameter Setting and Script
+        run: |
+          previous_n_days=6;
+          DATE=$(date --date="${dataset_date} -${previous_n_days} day" +%Y-%m-%d);
+          sleep_time_begins="00H 40M 0S";
+          sleep_time_ends="08H 00M 0S";
+          asc_desc_linestring="";
+          time_zone="Europe/Athens";
+          buffer_meters=1500;
+          resolution_dem=30;
+          verbose_Rmd="FALSE";
+          Rscript R_templates/data_template.R ${{ secrets.USER_ID }} ${{ secrets.FITBIT_TOKEN }} $previous_n_days $DATE "${sleep_time_begins}" "${sleep_time_ends}" "${asc_desc_linestring}" $time_zone $buffer_meters $resolution_dem $verbose_Rmd
+          pwd
+          ls -l
+
+      - name: Commit files
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add --all
+          git commit -am "add data and .Rmd file"
+          git push
+
+      - name: Render blog
+        run: Rscript -e 'blogdown::build_site(build_rmd = TRUE)'
+      - uses: actions/upload-artifact@v1
+        with:
+          name: public
+          path: public/
+
+#.............................................................................
+# Need to first create an empty gh-pages branch see
+# https://pkgdown.r-lib.org/reference/deploy_site_github.html
+# and also add secrets for a GH_PAT and EMAIL to the repository gh-action from
+# Cecilapp/GitHub-Pages-deploy
+
+#.............................................................................
+
+  checkout-and-deploy:
+   runs-on: ubuntu-latest
+   needs: blogdown
+   steps:
+     - name: Checkout
+       uses: actions/checkout@master
+     - name: Download artifact
+       uses: actions/download-artifact@v1.0.0
+       with:
+         name: public                                   # Artifact name (optional)
+         path: public                                   # Destination path (optional)
+     - name: Deploy to GitHub Pages
+       uses: Cecilapp/GitHub-Pages-deploy@v3
+       env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}           # https://github.com/settings/tokens
+       with:
+          email: ${{ secrets.EMAIL }}
+          build_dir: public/                            # "_site/" by default
+

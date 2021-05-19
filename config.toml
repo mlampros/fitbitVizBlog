@@ -1,0 +1,33 @@
+baseurl = "https://mlampros.github.io/fitbitVizBlog/"
+languageCode = "en-us"
+title = "A Hugo website"
+theme = "hugo-lithium"
+googleAnalytics = ""
+disqusShortname = ""
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$", "\\.RDS$"]
+
+[permalinks]
+   post = "/:year/:month/:day/:slug/"
+
+[[menu.main]]
+    name = "About"
+    url = "/about/"
+
+[params]
+    description = "A website for the Fitbit Visualizations"
+    dateFormat = "2006-01-02"
+
+    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = "9.12.0"
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsLang = ["r", "yaml"]
+    highlightjsTheme = "github"
+
+    MathJaxCDN = "//cdn.bootcss.com"
+    MathJaxVersion = "2.7.5"
+
+    [params.logo]
+    url = "swim_polar_bear.jpg"
+    width = 100
+    height = 100
+    alt = "Logo"
