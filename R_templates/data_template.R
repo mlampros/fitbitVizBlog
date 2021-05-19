@@ -78,6 +78,11 @@ heart_dat = fitbitViz::heart_rate_time_series(user_id = user_id,
 path_heart_dat = file.path(dir_save, glue::glue("heart_dat_{DATE}.RDS"))
 saveRDS(object = heart_dat, file = path_heart_dat)
 
+cat("======================================================\n")
+cat("The 'heart_dat' object was saved ..\n")
+str(heart_dat)
+cat("======================================================\n")
+
 
 #.......................
 # sleep data time series
@@ -96,6 +101,11 @@ sleep_ts = fitbitViz::sleep_time_series(user_id = user_id,
 path_sleep_ts = file.path(dir_save, glue::glue("sleep_ts_{DATE}.RDS"))
 saveRDS(object = sleep_ts, file = path_sleep_ts)
 
+cat("======================================================\n")
+cat("The 'sleep_ts' object was saved ..\n")
+str(sleep_ts)
+cat("======================================================\n")
+
 
 #...................
 # extract the log-id   (required for the GPS data)
@@ -110,6 +120,11 @@ log_id = fitbitViz::extract_LOG_ID(user_id = user_id,
 
 path_log_id = file.path(dir_save, glue::glue("log_id_{DATE}.RDS"))
 saveRDS(object = log_id, file = path_log_id)
+
+cat("======================================================\n")
+cat("The 'log_id' object was saved ..\n")
+print(log_id)
+cat("======================================================\n")
 
 
 #....................................................
@@ -131,6 +146,12 @@ path_res_tcx = file.path(dir_save, glue::glue("res_tcx_{DATE}.RDS"))
 saveRDS(object = res_tcx, file = path_res_tcx)
 
 
+cat("======================================================\n")
+cat("The 'res_tcx' object was saved ..\n")
+str(res_tcx)
+cat("======================================================\n")
+
+
 #...................................................
 # compute the sf-object buffer and the raster-extend  (1000 meters buffer)
 #...................................................
@@ -140,13 +161,18 @@ sf_rst_ext = NULL
 if (!is.null(res_tcx)) {
 
   sf_rst_ext = fitbitViz::extend_AOI_buffer(dat_gps_tcx = res_tcx,
-                                            buffer_in_meters = buffer_meters,
+                                            buffer_in_meters = as.integer(buffer_meters),
                                             CRS = CRS_value,
                                             verbose = verbose)
 }
 
 path_sf_rst_ext = file.path(dir_save, glue::glue("sf_rst_ext_{DATE}.RDS"))
 saveRDS(object = sf_rst_ext, file = path_sf_rst_ext)
+
+cat("======================================================\n")
+cat("The 'sf_rst_ext' object was saved ..\n")
+print(sf_rst_ext)
+cat("======================================================\n")
 
 
 #..................................................................
@@ -209,6 +235,12 @@ path_raysh_rst = file.path(dir_save, glue::glue("raysh_rst_{DATE}.tif"))
 raster::writeRaster(x = raysh_rst, filename = path_raysh_rst)
 
 
+cat("======================================================\n")
+cat("The 'raysh_rst' object was saved ..\n")
+print(raysh_rst)
+cat("======================================================\n")
+
+
 #....................................................................................
 # expand the knitr .Rmd file
 #
@@ -234,6 +266,11 @@ rmd_data = knitr::knit_expand(file = 'R_templates/functions_template.Rmd',
                               asc_desc_linestring = asc_desc_linestring)
 
 writeLines(text = rmd_data, con = path_rmd)
+
+cat("======================================================\n")
+cat("The 'rmd_data' object was saved ..\n")
+str(rmd_data)
+cat("======================================================\n")
 
 
 #................................................................
