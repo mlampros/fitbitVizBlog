@@ -103,7 +103,8 @@ saveRDS(object = sleep_ts, file = path_sleep_ts)
 
 cat("======================================================\n")
 cat("The 'sleep_ts' object was saved ..\n")
-str(sleep_ts)
+print(names(sleep_ts))
+str(sleep_ts[1:2])
 cat("======================================================\n")
 
 

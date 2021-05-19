@@ -69,8 +69,16 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
       - name: Install XQuartz
         run: brew install xquartz
+      - name: Install awscli
+        run: brew install AWScli
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
       - name: Install required packages
-        run: Rscript -e 'install.packages(c("fitbitViz", "glue", "rmarkdown", "blogdown"))'
+        run: Rscript -e 'install.packages(c("fitbitViz", "CopernicusDEM", "glue", "rmarkdown", "blogdown"))'
       - name: install hugo
         run: Rscript -e 'blogdown::install_hugo()'
 
