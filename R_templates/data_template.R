@@ -13,6 +13,15 @@ resolution_dem = as.character(args[15])
 verbose_Rmd = as.character(args[16])                    # !!!!!! verbosity for the .Rmd file, while I've set for the .R script the verbosity to TRUE by default I might have to enable this parameter to debug any errors
 
 
+#..........................
+# specify the time interval
+#..........................
+
+next_n_days = as.integer(previous_n_days)
+date_start = as.Date(DATE) - next_n_days
+DATE = as.character(date_start)
+
+
 # print(user_id)                                        # !!!! don't print 'user-id' and 'token'
 # print(token)
 print(previous_n_days)
@@ -42,8 +51,6 @@ path_rmd = file.path(dir_save, "index.Rmd")
 # parameters (modify)
 #....................
 
-date_start = as.Date(DATE)
-next_n_days = as.integer(previous_n_days)
 date_end = date_start + next_n_days                   # Add 'next_n_days' days to the 'date_start' variable to come to a N-days plot  (normally 7-days plot)
 rows_plots = ceiling((next_n_days + 1) / 2)           # account for the fact that I'll have 2-column plots, therefore compute the number of plot-rows
 num_character_error = 135                             # print that many character in case of an error
