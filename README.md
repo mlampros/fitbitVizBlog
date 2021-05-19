@@ -9,6 +9,6 @@ There were a [few changes](https://stackoverflow.com/a/43505891/8302386) compare
 
 <br>
 
-For more details on this website take a look to the [README.md file of the fitbitViz](https://github.com/mlampros/CopernicusDEM) R package
+For more details on this website take a look to the [README.md file of the fitbitViz](https://github.com/mlampros/fitbitViz) R package
 
 <br>
