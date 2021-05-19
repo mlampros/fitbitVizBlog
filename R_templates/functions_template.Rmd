@@ -27,7 +27,7 @@ asc_desc_linestring = as.character("{{asc_desc_linestring}}")
 
 ### **heart rate time series**
 
-```{r, out.height = '1000px'}
+```{r, out.height = '1100px'}
 
 #.......................
 # heart rate time series
@@ -61,7 +61,7 @@ dt_heart_rate
 
 ### **heart rate heatmap**
 
-```{r, out.height = '1000px'}
+```{r, out.height = '1100px'}
 
 #............................
 # heart rate intraday heatmap [ plot options: https://yihui.org/knitr/options/#plots ]
@@ -116,7 +116,7 @@ dt_heart_rate_var
 
 ### **sleep time series**
 
-```{r, out.height = '1000px'}
+```{r, out.height = '1100px'}
 
 #.......................
 # sleep data time series
@@ -215,6 +215,8 @@ if (!flag_no_gps_data) {
 }
 
 ```
+
+<br>
 
 ```{r}
 
