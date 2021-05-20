@@ -184,52 +184,59 @@ cat("======================================================\n")
 #..................................................................
 
 raysh_rst = NULL
+dem_dir = tempdir()
+
 
 if (!is.null(sf_rst_ext)) {
 
-  dem_dir = tempdir()
+  dem30 = tryCatch(CopernicusDEM::aoi_geom_save_tif_matches(sf_or_file = sf_rst_ext$sfc_obj,
+                                                            dir_save_tifs = dem_dir,
+                                                            resolution = as.integer(resolution_dem),
+                                                            crs_value = CRS_value,
+                                                            threads = parallel::detectCores(),
+                                                            verbose = verbose), error = function(e) e)                                  # Add an exception for the case that the 'AWScli' is not setup
 
-  dem30 = CopernicusDEM::aoi_geom_save_tif_matches(sf_or_file = sf_rst_ext$sfc_obj,
-                                                   dir_save_tifs = dem_dir,
-                                                   resolution = as.integer(resolution_dem),
-                                                   crs_value = CRS_value,
-                                                   threads = parallel::detectCores(),
-                                                   verbose = verbose)
+  if (inherits(dem30, 'error')) {
 
-  TIF = list.files(dem_dir, pattern = '.tif', full.names = T)
-
-  if (length(TIF) > 1) {
-
-    #....................................................
-    # create a .VRT file if I have more than 1 .tif files
-    #....................................................
-
-    file_out = file.path(dem_dir, 'VRT_mosaic_FILE.vrt')
-
-    vrt_dem30 = CopernicusDEM::create_VRT_from_dir(dir_tifs = dem_dir,
-                                                   output_path_VRT = file_out,
-                                                   verbose = verbose)
+    cat(glue::glue("The 'CopernicusDEM::aoi_geom_save_tif_matches()' function gave the following MESSAGE:  '{dem30$message}'"), '\n')
   }
+  else {
 
-  if (length(TIF) == 1) {
+    TIF = list.files(dem_dir, pattern = '.tif', full.names = T)
 
-    #..................................................
-    # if I have a single .tif file keep the first index
-    #..................................................
+    if (length(TIF) > 1) {
 
-    file_out = TIF[1]
+      #....................................................
+      # create a .VRT file if I have more than 1 .tif files
+      #....................................................
+
+      file_out = file.path(dem_dir, 'VRT_mosaic_FILE.vrt')
+
+      vrt_dem30 = CopernicusDEM::create_VRT_from_dir(dir_tifs = dem_dir,
+                                                     output_path_VRT = file_out,
+                                                     verbose = verbose)
+    }
+
+    if (length(TIF) == 1) {
+
+      #..................................................
+      # if I have a single .tif file keep the first index
+      #..................................................
+
+      file_out = TIF[1]
+    }
+
+    #.......................................
+    # crop the elevation DEM based on the
+    # coordinates extent of the GPS-CTX data
+    #.......................................
+
+    raysh_rst = fitbitViz::crop_DEM(tif_or_vrt_dem_file = file_out,
+                                    sf_buffer_obj = sf_rst_ext$sfc_obj,
+                                    CRS = CRS_value,
+                                    digits = 6,
+                                    verbose = verbose)
   }
-
-  #.......................................
-  # crop the elevation DEM based on the
-  # coordinates extent of the GPS-CTX data
-  #.......................................
-
-  raysh_rst = fitbitViz::crop_DEM(tif_or_vrt_dem_file = file_out,
-                                  sf_buffer_obj = sf_rst_ext$sfc_obj,
-                                  CRS = CRS_value,
-                                  digits = 6,
-                                  verbose = verbose)
 }
 
 

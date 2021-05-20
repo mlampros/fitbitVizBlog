@@ -25,8 +25,8 @@ asc_desc_linestring = as.character("")
 
 <br>
 
-### [**heart rate time series**](#anchor_heart_rate)
-<a id="anchor_heart_rate"></a>
+### [**heart rate time series**](#anchor_heart_rate_ts)
+<a id="anchor_heart_rate_ts"></a>
 
 ```{r, out.height = '1100px'}
 
@@ -60,7 +60,8 @@ dt_heart_rate
 
 <br>
 
-### **heart rate heatmap**
+### [**heart rate heatmap**](#anchor_heart_heatmap)
+<a id="anchor_heart_heatmap"></a>
 
 ```{r, out.height = '1100px'}
 
@@ -78,8 +79,8 @@ hrt_heat
 
 <br>
 
-### [**heart rate variability during sleep time**](#anchor_heart_var)
-<a id="anchor_heart_var"></a>
+### [**heart rate variability during sleep time**](#anchor_heart_variability)
+<a id="anchor_heart_variability"></a>
 
 ```{r}
 
@@ -116,7 +117,8 @@ dt_heart_rate_var
 
 <br>
 
-### **sleep time series**
+### [**sleep time series**](#anchor_sleep_ts)
+<a id="anchor_sleep_ts"></a>
 
 ```{r, out.height = '1100px'}
 
@@ -150,7 +152,8 @@ dt_sleep_heatmap
 
 <br>
 
-### **GPS data of outdoor activities**
+### [**GPS data of outdoor activities**](#anchor_gps_outdoor)
+<a id="anchor_gps_outdoor"></a>
 
 ```{r}
 
@@ -197,7 +200,8 @@ if (!flag_no_gps_data) {
 
 <br>
 
-### **Leaflet Map of Point Coordinates**
+### [**Leaflet Map of Point Coordinates**](#anchor_leaflet_coords)
+<a id="anchor_leaflet_coords"></a>
 
 ```{r}
 
@@ -244,7 +248,8 @@ if (!flag_no_gps_data) {
 
 <br>
 
-### **3-dimensional Rayshader Map of the Activities**
+### [**3-dimensional Rayshader Map of the Activities**](#anchor_3d_rayshader)
+<a id="anchor_3d_rayshader"></a>
 
 ```{r}
 
