@@ -1,5 +1,6 @@
 ---
 title: "2021-04-26  to  2021-05-02  ( Fitbit Visualizations )"
+date: "2021-04-26"
 ---
 
 ```{r setup, echo = FALSE}
