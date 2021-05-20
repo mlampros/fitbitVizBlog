@@ -232,8 +232,13 @@ if (!is.null(sf_rst_ext)) {
                                   verbose = verbose)
 }
 
-path_raysh_rst = file.path(dir_save, glue::glue("raysh_rst_{DATE}.tif"))
-raster::writeRaster(x = raysh_rst, filename = path_raysh_rst)
+
+path_raysh_rst = file.path(dir_save, glue::glue("INIT_INVALID_PATH.tif"))
+
+if (!is.null(raysh_rst)) {
+  path_raysh_rst = file.path(dir_save, glue::glue("raysh_rst_{DATE}.tif"))
+  raster::writeRaster(x = raysh_rst, filename = path_raysh_rst)
+}
 
 
 cat("======================================================\n")
