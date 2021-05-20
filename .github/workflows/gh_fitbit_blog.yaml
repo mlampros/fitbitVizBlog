@@ -90,8 +90,8 @@ jobs:
 
       - name: Fitbit Parameter Setting and Script
         run: |
-          previous_n_days=1;
-          DATE="2021-02-28";
+          previous_n_days=6;
+          DATE=$(date +"%Y-%m-%d");
           sleep_time_begins="00H 40M 0S";
           sleep_time_ends="08H 00M 0S";
           asc_desc_linestring="";
