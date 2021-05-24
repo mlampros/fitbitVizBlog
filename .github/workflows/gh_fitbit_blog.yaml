@@ -91,7 +91,7 @@ jobs:
       - name: Fitbit Parameter Setting and Script
         run: |
           previous_n_days=6;
-          DATE=$(date +"%Y-%m-%d");
+          DATE="2021-05-23";
           sleep_time_begins="00H 40M 0S";
           sleep_time_ends="08H 00M 0S";
           asc_desc_linestring="";
@@ -116,13 +116,12 @@ jobs:
           name: public
           path: public/
 
-#.............................................................................
-# Need to first create an empty gh-pages branch see
-# https://pkgdown.r-lib.org/reference/deploy_site_github.html
-# and also add secrets for a GH_PAT and EMAIL to the repository gh-action from
-# Cecilapp/GitHub-Pages-deploy
-
-#.............................................................................
+  #.............................................................................
+  # Need to first create an empty gh-pages branch see
+  # https://pkgdown.r-lib.org/reference/deploy_site_github.html
+  # and also add secrets for a GH_PAT and EMAIL to the repository gh-action from
+  # Cecilapp/GitHub-Pages-deploy
+  #.............................................................................
 
   checkout-and-deploy:
    runs-on: ubuntu-latest
