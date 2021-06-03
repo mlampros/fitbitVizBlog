@@ -120,7 +120,7 @@ log_id = tryCatch(fitbitViz::extract_LOG_ID(user_id = user_id,
                                    verbose = verbose), error = function(e) e)
 
 if (inherits(log_id, 'error')) {
-  cat(glue::glue("Error Message:  '{log_id$message}'"), '\n')
+  cat(glue::glue("Error Message of 'log_id':  '{log_id$message}'"), '\n')
   log_id = NULL
 }
 
