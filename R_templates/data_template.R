@@ -1,5 +1,5 @@
 args <- commandArgs()
-# print(args)                                           # for validatin purposes, see: https://stackoverflow.com/a/50108581
+# print(args)                                           # for validation purposes, see: https://stackoverflow.com/a/50108581
 user_id = as.character(args[6])
 token = as.character(args[7])
 previous_n_days = as.character(args[8])
