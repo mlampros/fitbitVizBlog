@@ -112,12 +112,17 @@ cat("======================================================\n")
 # extract the log-id   (required for the GPS data)
 #...................
 
-log_id = fitbitViz::extract_LOG_ID(user_id = user_id,
+log_id = tryCatch(fitbitViz::extract_LOG_ID(user_id = user_id,
                                    token = token,
                                    after_Date = DATE,
                                    limit = 10,
                                    sort = 'asc',
-                                   verbose = verbose)
+                                   verbose = verbose), error = function(e) e)
+
+if (inherits(log_id, 'error')) {
+  cat(glue::glue("Error Message:  '{log_id$message}'"), '\n')
+  log_id = NULL
+}
 
 path_log_id = file.path(dir_save, glue::glue("log_id_{DATE}.RDS"))
 saveRDS(object = log_id, file = path_log_id)
