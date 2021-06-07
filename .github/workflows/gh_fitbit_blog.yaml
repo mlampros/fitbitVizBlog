@@ -22,12 +22,14 @@
 #............................................................................................
 # run a cron-job every week (say, on Monday), see,
 # https://crontab.guru/examples.html
-# https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
+# https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events#
+# On Github cron-jobs run on UTC Time-Zone (which is currently 3 hours before my current
+# Time-Zone EEST. I don't have to adjust anything because I specify the day which is SUNDAY)
 #............................................................................................
 
 on:
   schedule:
-    - cron: "0 23 * * SUN"
+    - cron: "0 23 * * MON"
   push:
     branches: master
 
@@ -91,7 +93,7 @@ jobs:
       - name: Fitbit Parameter Setting and Script
         run: |
           previous_n_days=6;
-          DATE=$(date +"%Y-%m-%d");
+          DATE="2021-06-06";
           sleep_time_begins="00H 40M 0S";
           sleep_time_ends="08H 00M 0S";
           asc_desc_linestring="";
@@ -99,7 +101,7 @@ jobs:
           buffer_meters=1500;
           resolution_dem=30;
           verbose_Rmd="FALSE";
-          Rscript /Users/runner/work/fitbitVizBlog/fitbitVizBlog/R_templates/data_template.R ${{ secrets.USER_ID }} ${{ secrets.FITBIT_TOKEN }} $previous_n_days $DATE "${sleep_time_begins}" "${sleep_time_ends}" "${asc_desc_linestring}" $time_zone $buffer_meters $resolution_dem $verbose_Rmd
+          /usr/bin/Rscript /Users/runner/work/fitbitVizBlog/fitbitVizBlog/R_templates/data_template.R ${{ secrets.USER_ID }} ${{ secrets.FITBIT_TOKEN }} $previous_n_days $DATE "${sleep_time_begins}" "${sleep_time_ends}" "${asc_desc_linestring}" $time_zone $buffer_meters $resolution_dem $verbose_Rmd
 
       - name: Commit files
         run: |
