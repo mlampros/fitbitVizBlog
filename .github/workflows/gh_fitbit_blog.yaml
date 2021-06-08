@@ -53,6 +53,13 @@ on:
 # As mentioned in
 #       https://github.com/aws-actions/configure-aws-credentials/issues/9#issuecomment-569370732
 # the "awscli" is available when using "aws-actions/configure-aws-credentials@v1"
+#
+# Switch to environment variables for the input parameters as discussed in the next weblinks and make sure that these are character strings:
+#       https://github.blog/changelog/2019-10-01-github-actions-new-workflow-syntax-features/#env-at-the-workflow-and-job-level
+#       https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#env
+#       https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#env-context
+#       https://github.com/actions/starter-workflows/issues/68#issuecomment-538026112
+#       https://github.com/actions/starter-workflows/issues/68#issuecomment-524661275
 #.............................................................................................................................................
 
 name: deployblog
@@ -89,20 +96,18 @@ jobs:
         run: Rscript -e 'install.packages(c("fitbitViz", "CopernicusDEM", "DT", "magick", "glue", "rmarkdown", "blogdown"))'
       - name: install hugo
         run: Rscript -e 'blogdown::install_hugo()'
-
       - name: Fitbit Parameter Setting and Script
-        run: |
-          previous_n_days=6;
-          DATE="2021-06-06";
-          sleep_time_begins="00H 40M 0S";
-          sleep_time_ends="08H 00M 0S";
-          asc_desc_linestring="";
-          time_zone="Europe/Athens";
-          buffer_meters=1500;
-          resolution_dem=30;
-          verbose_Rmd="FALSE";
-          /usr/bin/Rscript /Users/runner/work/fitbitVizBlog/fitbitVizBlog/R_templates/data_template.R ${{ secrets.USER_ID }} ${{ secrets.FITBIT_TOKEN }} $previous_n_days $DATE "${sleep_time_begins}" "${sleep_time_ends}" "${asc_desc_linestring}" $time_zone $buffer_meters $resolution_dem $verbose_Rmd
-
+        env:
+          previous_n_days: "6"
+          DATE: "2021-06-06"
+          sleep_time_begins: "00H 40M 0S"
+          sleep_time_ends: "08H 00M 0S"
+          asc_desc_linestring: ""
+          time_zone: "Europe/Athens"
+          buffer_meters: "1500"
+          resolution_dem: "30"
+          verbose_Rmd: "FALSE"
+        run: Rscript R_templates/data_template.R ${{ secrets.USER_ID }} ${{ secrets.FITBIT_TOKEN }} ${previous_n_days} ${DATE} "${sleep_time_begins}" "${sleep_time_ends}" "${asc_desc_linestring}" ${time_zone} ${buffer_meters} ${resolution_dem} ${verbose_Rmd}
       - name: Commit files
         run: |
           git config --local user.email "actions@github.com"
@@ -110,7 +115,6 @@ jobs:
           git add --all
           git commit -am "add data and .Rmd file"
           git push
-
       - name: Render blog
         run: Rscript -e 'blogdown::build_site(build_rmd = TRUE)'
       - uses: actions/upload-artifact@v1
