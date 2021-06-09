@@ -29,7 +29,7 @@
 
 on:
   schedule:
-    - cron: "0 23 * * TUE"
+    - cron: "0 23 * * WED"
   push:
     branches: master
 
@@ -60,6 +60,9 @@ on:
 #       https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#env-context
 #       https://github.com/actions/starter-workflows/issues/68#issuecomment-538026112
 #       https://github.com/actions/starter-workflows/issues/68#issuecomment-524661275
+#
+# Using the "working-directory" keyword, I can specify the working directory of where to run the command of a specific step
+# It seems that the default path of the working directory was changed before running the step "Fitbit Parameter Setting and Script"
 #.............................................................................................................................................
 
 name: deployblog
@@ -97,6 +100,7 @@ jobs:
       - name: install hugo
         run: Rscript -e 'blogdown::install_hugo()'
       - name: Fitbit Parameter Setting and Script
+        working-directory: ${{ github.workspace }}
         env:
           previous_n_days: "6"
           DATE: "2021-06-06"
