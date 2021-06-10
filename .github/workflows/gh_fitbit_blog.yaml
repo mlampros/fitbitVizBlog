@@ -29,7 +29,7 @@
 
 on:
   schedule:
-    - cron: "0 23 * * WED"
+    - cron: "0 23 * * THU"
   push:
     branches: master
 
@@ -118,11 +118,7 @@ jobs:
           buffer_meters: "1500"
           resolution_dem: "30"
           verbose_Rmd: "FALSE"
-        run: |
-           pwd
-           ls -a
-           ls -a R_templates
-           Rscript R_templates/data_template.R ${{ secrets.USER_ID }} ${{ secrets.FITBIT_TOKEN }} ${previous_n_days} ${DATE} "${sleep_time_begins}" "${sleep_time_ends}" "${asc_desc_linestring}" ${time_zone} ${buffer_meters} ${resolution_dem} ${verbose_Rmd}
+        run: Rscript R_templates/data_template.R ${{ secrets.USER_ID }} ${{ secrets.FITBIT_TOKEN }} ${previous_n_days} ${DATE} "${sleep_time_begins}" "${sleep_time_ends}" "${asc_desc_linestring}" ${time_zone} ${buffer_meters} ${resolution_dem} ${verbose_Rmd}
       - name: Commit files
         run: |
           git config --local user.email "actions@github.com"
