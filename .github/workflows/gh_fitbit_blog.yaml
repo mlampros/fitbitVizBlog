@@ -97,6 +97,11 @@ jobs:
         run: brew install imagemagick
       - name: Install udunits
         run: brew install udunits
+      - name: "Install spatial libraries (copied from https://github.com/r-spatial/sf/blob/master/.github/workflows/tic-db.yml#L99)"
+        run: |
+          # conflicts with gfortran from r-lib/actions when linking gcc
+          rm '/usr/local/bin/gfortran'
+          brew install pkg-config gdal proj geos
       - name: Install required packages
         run: Rscript -e 'install.packages(c("fitbitViz", "CopernicusDEM", "DT", "magick", "glue", "rmarkdown", "blogdown"))'
       - name: install hugo
