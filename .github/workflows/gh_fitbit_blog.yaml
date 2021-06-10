@@ -95,6 +95,8 @@ jobs:
       #   run: aws s3 ls
       - name: Install ImageMagick
         run: brew install imagemagick
+      - name: Install udunits
+        run: brew install udunits
       - name: Install required packages
         run: Rscript -e 'install.packages(c("fitbitViz", "CopernicusDEM", "DT", "magick", "glue", "rmarkdown", "blogdown"))'
       - name: install hugo
@@ -114,6 +116,7 @@ jobs:
         run: |
            pwd
            ls -a
+           ls -a R_templates
            Rscript R_templates/data_template.R ${{ secrets.USER_ID }} ${{ secrets.FITBIT_TOKEN }} ${previous_n_days} ${DATE} "${sleep_time_begins}" "${sleep_time_ends}" "${asc_desc_linestring}" ${time_zone} ${buffer_meters} ${resolution_dem} ${verbose_Rmd}
       - name: Commit files
         run: |
