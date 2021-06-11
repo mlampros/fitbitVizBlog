@@ -29,7 +29,7 @@
 
 on:
   schedule:
-    - cron: "0 23 * * THU"
+    - cron: "40 7 * * FRI"
   push:
     branches: master
 
@@ -78,7 +78,7 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
       - uses: actions/checkout@v2
-        if: github.event_name == 'push'
+        if: github.event_name != 'pull_request'
         with:
           fetch-depth: 0
       - uses: r-lib/actions/setup-r@v1
