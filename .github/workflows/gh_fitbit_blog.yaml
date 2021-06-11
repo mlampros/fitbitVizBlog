@@ -29,7 +29,7 @@
 
 on:
   schedule:
-    - cron: "40 7 * * FRI"
+    - cron: "0 8 * * FRI"
   push:
     branches: master
 
