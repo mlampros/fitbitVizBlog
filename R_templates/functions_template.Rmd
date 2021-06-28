@@ -254,7 +254,7 @@ if (!flag_no_gps_data) {
 <a id="anchor_3d_rayshader"></a>
 
 ```{r}
-
+flag_no_gps_data = TRUE
 #...................................................
 # compute the sf-object buffer and the raster-extend  (1000 meters buffer)
 #...................................................

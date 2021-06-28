@@ -19,5 +19,8 @@
 
 * `Error in content_list_obj$sleep[[1]] : subscript out of bounds  Calls: <Anonymous> -> sleep_single_day`
     * *You haven't updated the Fitbit data in your account! Connect to the application to upload the recent data for this Date*
+
+* `Error in hillshade[, , 1] * scales::rescale(shadowmap, c(max_darken, 1)) : non-conformable arrays`
+    * *Highly probable it's caused by the 'linestring_ASC_DESC' parameter of the 'fitbitViz::rayshader_3d_DEM()' function. Set this parameter to NULL for the specific route or specify a time point for the split (see documentation)*
     
 <br>
