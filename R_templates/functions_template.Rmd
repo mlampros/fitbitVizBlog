@@ -376,7 +376,7 @@ if (!flag_no_gps_data) {
                               elevation_sample_points = dat_3m,
                               zoom = 0.3,
                               windowsize = c(1000, 800),
-                              add_shadow_rescale_original = TRUE,
+                              add_shadow_rescale_original = FALSE,
                               verbose = verbose)
 
   rgl::rgl.snapshot(snapshot_rayshader_path)
