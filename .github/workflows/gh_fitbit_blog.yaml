@@ -112,7 +112,7 @@ jobs:
           brew install pkg-config gdal proj geos
       - name: Install required packages
         run: Rscript -e 'install.packages(c("DT", "magick", "glue", "rmarkdown", "blogdown", "remotes"))'
-      - name: Install the Github versions of rayshader, CopernicusDEM and fitbitViz
+      - name: "Install the Github versions of 'rayshader', 'CopernicusDEM' and 'fitbitViz'"
         run: Rscript -e "remotes::install_github(c('tylermorganwall/rayshader', 'mlampros/CopernicusDEM', 'mlampros/fitbitViz'), upgrade = 'always', dependencies = TRUE, repos = 'https://cloud.r-project.org/')"
       - name: install hugo
         run: Rscript -e 'blogdown::install_hugo()'
