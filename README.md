@@ -27,3 +27,4 @@
     * Use the **auth_token = '${{ secrets.GH_PAT }}'** parameter in **remotes::install_github()** ( See the **README.md** file of the [fitbitViz](https://github.com/mlampros/fitbitViz#keep-track-of-your-activities-using-fitbitviz-blogdown-and-github-actions) package on how to create the **GH_PAT** environment variable)
     
 <br>
+
