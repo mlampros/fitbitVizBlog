@@ -25,6 +25,7 @@
 
 * `Error: Using bundled GitHub PAT. Please add your own PAT to the env var `GITHUB_PAT` Error: Failed to install 'unknown package' from GitHub: HTTP error 401. Bad credentials`
     * Use the **auth_token = '${{ secrets.GH_PAT }}'** parameter in **remotes::install_github()** ( See the **README.md** file of the [fitbitViz](https://github.com/mlampros/fitbitViz#keep-track-of-your-activities-using-fitbitviz-blogdown-and-github-actions) package on how to create the **GH_PAT** environment variable)
+    * In case that it still gives the error then first run **Sys.setenv(GITHUB_PAT = '${{ secrets.GH_PAT }}')** and then proceed with the **remotes::install_github()** function **without** the **auth_token** parameter
     
 <br>
 
