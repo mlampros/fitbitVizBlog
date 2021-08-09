@@ -115,9 +115,9 @@ jobs:
       - name: "Install the Github version of 'rayshader'"
         run: Rscript -e "remotes::install_github(c('tylermorganwall/rayshader'), upgrade = 'always', dependencies = TRUE, auth_token = '${{ secrets.GH_PAT }}', repos = 'https://cloud.r-project.org/')"
       - name: "Install the Github version of 'CopernicusDEM'"
-        run: Rscript -e "remotes::install_github(c('mlampros/CopernicusDEM'), upgrade = 'always', dependencies = TRUE, auth_token = '${{ secrets.GH_PAT }}', repos = 'https://cloud.r-project.org/')"
+        run: Rscript -e "remotes::install_github(c('mlampros/CopernicusDEM'), upgrade = 'always', dependencies = TRUE, auth_token = '${{ secrets.CopernicusDEM_GH_PAT }}', repos = 'https://cloud.r-project.org/')"
       - name: "Install the Github version of 'fitbitViz'"
-        run: Rscript -e "remotes::install_github(c('mlampros/fitbitViz'), upgrade = 'always', dependencies = TRUE, auth_token = '${{ secrets.GH_PAT }}', repos = 'https://cloud.r-project.org/')"
+        run: Rscript -e "remotes::install_github(c('mlampros/fitbitViz'), upgrade = 'always', dependencies = TRUE, auth_token = '${{ secrets.CopernicusDEM_GH_PAT }}', repos = 'https://cloud.r-project.org/')"
       - name: install hugo
         run: Rscript -e 'blogdown::install_hugo()'
       - name: Fitbit DATE parameter (this has to be a separate step)
