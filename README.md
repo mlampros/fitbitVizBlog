@@ -22,5 +22,8 @@
 
 * `Error in hillshade[, , 1] * scales::rescale(shadowmap, c(max_darken, 1)) : non-conformable arrays`
     * *Highly probable it's caused by the 'linestring_ASC_DESC' parameter of the 'fitbitViz::rayshader_3d_DEM()' function. Set this parameter to NULL for the specific route or specify a time point for the split (see documentation)*
+
+* `Error: Using bundled GitHub PAT. Please add your own PAT to the env var `GITHUB_PAT` Error: Failed to install 'unknown package' from GitHub: HTTP error 401. Bad credentials`
+    * Use the **auth_token = '${{ secrets.GH_PAT }}'** parameter in **remotes::install_github()** ( See the **README.md** file of the [fitbitViz](https://github.com/mlampros/fitbitViz#keep-track-of-your-activities-using-fitbitviz-blogdown-and-github-actions) package on how to create the **GH_PAT** environment variable)
     
 <br>
