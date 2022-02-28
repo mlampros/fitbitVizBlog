@@ -238,8 +238,6 @@ if (!is.null(sf_rst_ext)) {
 
     raysh_rst = fitbitViz::crop_DEM(tif_or_vrt_dem_file = file_out,
                                     sf_buffer_obj = sf_rst_ext$sfc_obj,
-                                    CRS = CRS_value,
-                                    digits = 6,
                                     verbose = verbose)
   }
 }
