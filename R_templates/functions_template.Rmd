@@ -381,7 +381,6 @@ if (!flag_no_gps_data) {
   rgl::rgl.snapshot(snapshot_rayshader_path)
   rgl::par3d(mouseMode = "trackball")   # options: c("trackball", "polar", "zoom", "selecting")
   rgl::rglwidget()
-
 }
 
 ```
