@@ -1,0 +1,388 @@
+---
+title: "2022-05-23  to  2022-05-29  ( Fitbit Visualizations )"
+date: "2022-05-23"
+---
+
+```{r setup, echo = FALSE}
+
+knitr::opts_chunk$set(fig.width = 12,
+                      fig.height = 10, 
+                      fig.align = "center",
+                      warning = FALSE, 
+                      message = FALSE,
+                      comment = FALSE,
+                      echo = FALSE, 
+                      eval = TRUE,
+                      cache = FALSE)
+
+date_start = "2022-05-23"
+date_end = "2022-05-29"
+verbose = as.logical(FALSE)
+
+CRS_value = as.integer(4326)
+asc_desc_linestring = as.character("")
+
+```
+
+<br>
+
+### [**heart rate time series**](#anchor_heart_rate_ts)
+<a id="anchor_heart_rate_ts"></a>
+
+```{r, out.height = '1100px'}
+
+#.......................
+# heart rate time series
+#.......................
+
+heart_dat = readRDS(file = "heart_dat_2022-05-23.RDS")
+heart_dat$plt
+
+```
+
+```{r}
+
+#...............................................
+# DT::datatable() as option to download the data  [ heart rate time series ]
+#...............................................
+
+dt_heart_rate_data = data.table::rbindlist(heart_dat$heart_rate_intraday)
+
+dt_heart_rate = DT::datatable(data = dt_heart_rate_data,
+                              rownames = FALSE,
+                              extensions = 'Buttons',
+                              options = list(pageLength = 10,
+                                             dom = 'Bfrtip',
+                                             buttons = list(list(extend = 'csv',
+                                                                 filename = 'heart_rate_time_series'))))
+dt_heart_rate
+
+```
+
+<br>
+
+### [**heart rate heatmap**](#anchor_heart_heatmap)
+<a id="anchor_heart_heatmap"></a>
+
+```{r, out.height = '1100px'}
+
+#............................
+# heart rate intraday heatmap [ plot options: https://yihui.org/knitr/options/#plots ]
+#............................
+
+heart_intra = heart_dat$heart_rate_intraday
+
+hrt_heat = fitbitViz::heart_rate_heatmap(heart_rate_intraday_data = heart_intra, 
+                                         angle_x_axis = 0)
+hrt_heat
+
+```
+
+<br>
+
+### [**heart rate variability during sleep time**](#anchor_heart_variability)
+<a id="anchor_heart_variability"></a>
+
+```{r}
+
+#.......................
+# heart rate variability
+#.......................
+
+hrt_rt_var = fitbitViz::heart_rate_variability_sleep_time(heart_rate_data = heart_dat,
+                                                          sleep_begin = "00H 40M 0S",
+                                                          sleep_end = "08H 00M 0S",
+                                                          ggplot_hr_var = TRUE,
+                                                          angle_x_axis = 25)
+hrt_rt_var$hr_var_plot
+
+```
+
+```{r}
+
+#..............................................
+# DT::datatable() of the heart rate variability
+#..............................................
+
+dt_heart_rate_var = DT::datatable(data = hrt_rt_var$hr_var_data,
+                                  rownames = FALSE,
+                                  extensions = 'Buttons',
+                                  options = list(pageLength = 10,
+                                                 dom = 'Bfrtip',
+                                                 buttons = list(list(extend = 'csv',
+                                                                     filename = 'heart_rate_variability'))))
+
+dt_heart_rate_var
+
+```
+
+<br>
+
+### [**sleep time series**](#anchor_sleep_ts)
+<a id="anchor_sleep_ts"></a>
+
+```{r, out.height = '1100px'}
+
+#.......................
+# sleep data time series
+#.......................
+
+sleep_ts = readRDS(file = "sleep_ts_2022-05-23.RDS")
+
+sleep_ts$plt_lev_segments
+
+```
+
+```{r}
+
+#.....................................
+# DT::datatable() of the sleep heatmap
+#.....................................
+
+dt_sleep_heatmap = DT::datatable(data = sleep_ts$heatmap_data,
+                                 rownames = FALSE,
+                                 extensions = 'Buttons',
+                                 options = list(pageLength = 10,
+                                                dom = 'Bfrtip',
+                                                buttons = list(list(extend = 'csv',
+                                                                    filename = 'sleep_heat_map'))))
+
+dt_sleep_heatmap
+
+```
+
+<br>
+
+### [**GPS data of outdoor activities**](#anchor_gps_outdoor)
+<a id="anchor_gps_outdoor"></a>
+
+```{r}
+
+#...................
+# extract the log-id   (required for the GPS data)
+#...................
+
+log_id = readRDS(file = "log_id_2022-05-23.RDS")
+
+flag_no_gps_data = FALSE
+
+msg = ''
+
+if (is.null(log_id)) {
+  
+  flag_no_gps_data = TRUE
+  
+  msg = glue::glue("For the time interval from '{date_start}' to '{date_end}' the 'log-id' does not exist! Therefore both the 'Leaflet' and the '3-dimensional Rayshader Map' won't be visualized!")
+}
+
+```
+
+```{r}
+
+#....................................................
+# return the gps-ctx data.table for the output log-id
+#....................................................
+
+if (!flag_no_gps_data) {
+
+  res_tcx = readRDS(file = "res_tcx_2022-05-23.RDS")
+  
+  if (is.null(res_tcx)) {
+    
+    flag_no_gps_data = TRUE
+
+    msg = glue::glue("For the time interval from '{date_start}' to '{date_end}' and log-id: '{log_id}', there are no GPS data available! Both the 'Leaflet' and the '3-dimensional Rayshader Map' won't be visualized!")
+  }
+}
+
+```
+
+`r sprintf("<span style='color: %s;'>%s</span>", 'red', msg)`
+
+<br>
+
+### [**Leaflet Map of Point Coordinates**](#anchor_leaflet_coords)
+<a id="anchor_leaflet_coords"></a>
+
+
+```{r}
+
+#................................
+# Create the Leaflet / LeafGL Map
+#................................
+
+
+if (!flag_no_gps_data) {
+  
+  res_lft = fitbitViz::leafGL_point_coords(dat_gps_tcx = res_tcx,
+                                         color_points_column = 'AltitudeMeters',
+                                         provider = leaflet::providers$Esri.WorldImagery,
+                                         option_viewer = rstudioapi::viewer,
+                                         CRS = CRS_value)
+  res_lft
+}
+
+```
+
+<br>
+
+```{r}
+
+#.................................
+# DT::datatable() for the GPS data
+#.................................
+
+if (!flag_no_gps_data) {
+
+  dt_gps_tcx = DT::datatable(data = res_tcx,
+                             rownames = FALSE,
+                             extensions = 'Buttons',
+                             class = 'white-space: nowrap',                 # unwrap the column-contents so that rows become flat, see:  https://github.com/rstudio/DT/issues/353
+                             options = list(pageLength = 10,
+                                            dom = 'Bfrtip',
+                                            buttons = list(list(extend = 'csv',
+                                                                filename = 'GPS_TCX_data'))))
+  
+  dt_gps_tcx
+}
+
+```
+
+<br>
+
+### [**3-dimensional Rayshader Map of the Activities**](#anchor_3d_rayshader)
+<a id="anchor_3d_rayshader"></a>
+
+```{r}
+
+#...................................................
+# compute the sf-object buffer and the raster-extend  (1000 meters buffer)
+#...................................................
+
+if (!flag_no_gps_data) {
+
+  sf_rst_ext = readRDS(file = "sf_rst_ext_2022-05-23.RDS")
+}
+
+```
+
+```{r}
+
+#..................................................................
+# Download the Copernicus DEM 30m elevation data
+# there is also the option to download the DEM 90m elevation data
+# which is of lower resolution but the image size is smaller which
+# means faster download
+#
+# In case that I don't have a raster then set the 'flag_no_gps_data'
+# parameter to TRUE (it is required for the rayshader map)
+#..................................................................
+
+if (!flag_no_gps_data) {
+  
+  if (file.exists("INIT_INVALID_PATH.tif")) {
+    
+    raysh_rst = raster::raster("INIT_INVALID_PATH.tif")
+  }
+  else {
+    
+    flag_no_gps_data = TRUE
+  }
+}
+
+```
+
+```{r}
+
+#............................................................................................................................
+# If the GPS route is an *ascending & descending* route we can convert the GPS (TCX) data to a spatial *LINESTRING* by
+# using the maximum altitude as a *split point* of the route to visualize the ascending route in *blue* and the descending in 
+# *red* (there is also the alternative to specify the split point based on time using the **time_split_asc_desc** parameter)
+#............................................................................................................................
+
+if (!flag_no_gps_data) {
+
+  #................................................................................................    by default create a linestring
+  linestring_dat = sf::st_as_sf(x = res_tcx, coords = c("longitude", "latitude"), crs = CRS_value)
+  linestring_dat = sf::st_combine(x = linestring_dat)
+  linestring_dat = sf::st_cast(x = linestring_dat, "LINESTRING")
+  #................................................................................................ 
+  
+  if (asc_desc_linestring != "") {                              # in case that the 'asc_desc_linestring' parameter is not an empty string I expect it to be either a boolean or a lubridate::hms('17:05:00') object
+    
+    if (asc_desc_linestring %in% c('TRUE', 'FALSE')) {
+    
+      if (as.logical(asc_desc_linestring)) {                    # must be TRUE
+        
+        linestring_dat = fitbitViz::gps_lat_lon_to_LINESTRING(dat_gps_tcx = res_tcx,
+                                                              CRS = CRS_value,
+                                                              time_split_asc_desc = NULL,    # if NULL defaults to ascending max. value of GPS for peak then descending
+                                                              verbose = verbose)
+      }
+    }
+    else {
+      
+      conv_lubr = lubridate::hms(asc_desc_linestring)                                         # convert the input character string to lubridate object and verify that it is a lubridate objec to class 'Period'
+      
+      if (all(names(attributes(conv_lubr)) %in% c("year", "month", "day", "hour", "minute", "class"))) {
+        
+        linestring_dat = fitbitViz::gps_lat_lon_to_LINESTRING(dat_gps_tcx = res_tcx,
+                                                            CRS = CRS_value,
+                                                            time_split_asc_desc = conv_lubr,
+                                                            verbose = verbose)
+      }
+    }
+  }
+}
+
+```
+
+```{r}
+
+#...............................................................................................
+# then we create the *'elevation_sample_points' data.table parameter* for the *3-dim* plot
+# based on the *min.*, *middle*  and *max.* altitude of the previously computed *'res_tcx'* data
+#...............................................................................................
+
+if (!flag_no_gps_data) {
+
+  idx_3m = c(which.min(res_tcx$AltitudeMeters), 
+             as.integer(length(res_tcx$AltitudeMeters) / 2), 
+             which.max(res_tcx$AltitudeMeters))
+  
+  cols_3m = c('latitude', 'longitude', 'AltitudeMeters')
+  dat_3m = res_tcx[idx_3m, ..cols_3m]
+
+}
+
+```
+
+```{r}
+
+#.......................................................
+# finally we visualize the *3-dimensional Rayshader Map*
+#.......................................................
+
+if (!flag_no_gps_data) {
+
+  snapshot_rayshader_path = tempfile(fileext = '.png')
+
+  rgl::open3d(useNULL = TRUE)                       # this removes the second rgl-popup-window
+
+  fitbitViz::rayshader_3d_DEM(rst_buf = raysh_rst,
+                              rst_ext = sf_rst_ext$raster_obj_extent,
+                              linestring_ASC_DESC = linestring_dat,
+                              elevation_sample_points = dat_3m,
+                              zoom = 0.3,
+                              windowsize = c(1000, 800),
+                              add_shadow_rescale_original = FALSE,
+                              verbose = verbose)
+
+  rgl::rgl.snapshot(snapshot_rayshader_path)
+  rgl::par3d(mouseMode = "trackball")   # options: c("trackball", "polar", "zoom", "selecting")
+  rgl::rglwidget()
+}
+
+```
+
+<br>
