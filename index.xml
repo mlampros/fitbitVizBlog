@@ -6,7 +6,17 @@
     <description>Recent content on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://mlampros.github.io/fitbitVizBlog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://mlampros.github.io/fitbitVizBlog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2022-06-13  to  2022-06-19  ( Fitbit Visualizations )</title>
+      <link>https://mlampros.github.io/fitbitVizBlog/2022/06/13/2022-06-13-to-2022-06-19-fitbit-visualizations/</link>
+      <pubDate>Mon, 13 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://mlampros.github.io/fitbitVizBlog/2022/06/13/2022-06-13-to-2022-06-19-fitbit-visualizations/</guid>
+      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities For the time interval from ‘2022-06-13’ to ‘2022-06-19’ the ‘log-id’ does not exist! Therefore both the ‘Leaflet’ and the ‘3-dimensional Rayshader Map’ won’t be visualized!
+Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+    </item>
+    
     <item>
       <title>2022-06-06  to  2022-06-12  ( Fitbit Visualizations )</title>
       <link>https://mlampros.github.io/fitbitVizBlog/2022/06/06/2022-06-06-to-2022-06-12-fitbit-visualizations/</link>
