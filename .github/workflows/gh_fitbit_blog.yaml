@@ -117,7 +117,7 @@ jobs:
       - name: "Install the Github versions of 'CopernicusDEM' and 'fitbitViz'"
         run: Rscript -e "Sys.setenv(GITHUB_PAT = '${{ secrets.GH_PAT }}'); remotes::install_github(c('mlampros/CopernicusDEM', 'mlampros/fitbitViz'), upgrade = 'always', dependencies = TRUE, repos = 'https://cloud.r-project.org/')"
       - name: install hugo
-        run: Rscript -e 'blogdown::install_hugo()'
+        run: Rscript -e 'blogdown::install_hugo(arch = "universal")'
       - name: Fitbit DATE parameter (this has to be a separate step)
         # run: echo "DATE='2022-02-27'">> $GITHUB_ENV
         run: echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
