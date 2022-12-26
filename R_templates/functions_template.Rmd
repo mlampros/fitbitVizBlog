@@ -83,36 +83,42 @@ hrt_heat
 ### [**heart rate variability during sleep time**](#anchor_heart_variability)
 <a id="anchor_heart_variability"></a>
 
+<br>
+
+**UPDATE 26-12-2022**: I replaced the *'heart_rate_variability_sleep_time()'* with the *'fitbit_data_type_by_date()'* function. The user can set the 'type' parameter to 'hrv' and use the *'fitbit_data_type_by_date()'* function instead. The latter function includes the new fitbit data types 'spo2' (Blood Oxygen Saturation), 'hrv' (Heart Rate Variability), 'br' (Breathing Rate), 'temp' (Temperature) and 'cardioscore' (Cardio Fitness Score or VO2 Max).
+
+<br>
+
 ```{r}
 
-#.......................
-# heart rate variability
-#.......................
-
-hrt_rt_var = fitbitViz::heart_rate_variability_sleep_time(heart_rate_data = heart_dat,
-                                                          sleep_begin = "{{sleep_time_begins}}",
-                                                          sleep_end = "{{sleep_time_ends}}",
-                                                          ggplot_hr_var = TRUE,
-                                                          angle_x_axis = 25)
-hrt_rt_var$hr_var_plot
+# #.......................
+# # heart rate variability
+# #.......................
+# 
+# hrt_rt_var = fitbitViz::heart_rate_variability_sleep_time(heart_rate_data = heart_dat,
+#                                                           sleep_begin = "{{sleep_time_begins}}",
+#                                                           sleep_end = "{{sleep_time_ends}}",
+#                                                           ggplot_hr_var = TRUE,
+#                                                           angle_x_axis = 25)
+# hrt_rt_var$hr_var_plot
 
 ```
 
 ```{r}
 
-#..............................................
-# DT::datatable() of the heart rate variability
-#..............................................
-
-dt_heart_rate_var = DT::datatable(data = hrt_rt_var$hr_var_data,
-                                  rownames = FALSE,
-                                  extensions = 'Buttons',
-                                  options = list(pageLength = 10,
-                                                 dom = 'Bfrtip',
-                                                 buttons = list(list(extend = 'csv',
-                                                                     filename = 'heart_rate_variability'))))
-
-dt_heart_rate_var
+# #..............................................
+# # DT::datatable() of the heart rate variability
+# #..............................................
+# 
+# dt_heart_rate_var = DT::datatable(data = hrt_rt_var$hr_var_data,
+#                                   rownames = FALSE,
+#                                   extensions = 'Buttons',
+#                                   options = list(pageLength = 10,
+#                                                  dom = 'Bfrtip',
+#                                                  buttons = list(list(extend = 'csv',
+#                                                                      filename = 'heart_rate_variability'))))
+# 
+# dt_heart_rate_var
 
 ```
 
