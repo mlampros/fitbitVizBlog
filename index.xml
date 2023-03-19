@@ -6,7 +6,37 @@
     <description>Recent content on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mlampros.github.io/fitbitVizBlog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mlampros.github.io/fitbitVizBlog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023-03-13  to  2023-03-19  ( Fitbit Visualizations )</title>
+      <link>https://mlampros.github.io/fitbitVizBlog/2023/03/13/2023-03-13-to-2023-03-19-fitbit-visualizations/</link>
+      <pubDate>Mon, 13 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://mlampros.github.io/fitbitVizBlog/2023/03/13/2023-03-13-to-2023-03-19-fitbit-visualizations/</guid>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time UPDATE 26-12-2022: I replaced the ‘heart_rate_variability_sleep_time()’ with the ‘fitbit_data_type_by_date()’ function. The user can set the ‘type’ parameter to ‘hrv’ and use the ‘fitbit_data_type_by_date()’ function instead. The latter function includes the new fitbit data types ‘spo2’ (Blood Oxygen Saturation), ‘hrv’ (Heart Rate Variability), ‘br’ (Breathing Rate), ‘temp’ (Temperature) and ‘cardioscore’ (Cardio Fitness Score or VO2 Max).
+sleep time series GPS data of outdoor activities For the time interval from ‘2023-03-13’ to ‘2023-03-19’ the ‘log-id’ does not exist!</description>
+    </item>
+    
+    <item>
+      <title>2023-03-06  to  2023-03-12  ( Fitbit Visualizations )</title>
+      <link>https://mlampros.github.io/fitbitVizBlog/2023/03/06/2023-03-06-to-2023-03-12-fitbit-visualizations/</link>
+      <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://mlampros.github.io/fitbitVizBlog/2023/03/06/2023-03-06-to-2023-03-12-fitbit-visualizations/</guid>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time UPDATE 26-12-2022: I replaced the ‘heart_rate_variability_sleep_time()’ with the ‘fitbit_data_type_by_date()’ function. The user can set the ‘type’ parameter to ‘hrv’ and use the ‘fitbit_data_type_by_date()’ function instead. The latter function includes the new fitbit data types ‘spo2’ (Blood Oxygen Saturation), ‘hrv’ (Heart Rate Variability), ‘br’ (Breathing Rate), ‘temp’ (Temperature) and ‘cardioscore’ (Cardio Fitness Score or VO2 Max).
+sleep time series GPS data of outdoor activities For the time interval from ‘2023-03-06’ to ‘2023-03-12’ the ‘log-id’ does not exist!</description>
+    </item>
+    
+    <item>
+      <title>2023-02-27  to  2023-03-05  ( Fitbit Visualizations )</title>
+      <link>https://mlampros.github.io/fitbitVizBlog/2023/02/27/2023-02-27-to-2023-03-05-fitbit-visualizations/</link>
+      <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://mlampros.github.io/fitbitVizBlog/2023/02/27/2023-02-27-to-2023-03-05-fitbit-visualizations/</guid>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time UPDATE 26-12-2022: I replaced the ‘heart_rate_variability_sleep_time()’ with the ‘fitbit_data_type_by_date()’ function. The user can set the ‘type’ parameter to ‘hrv’ and use the ‘fitbit_data_type_by_date()’ function instead. The latter function includes the new fitbit data types ‘spo2’ (Blood Oxygen Saturation), ‘hrv’ (Heart Rate Variability), ‘br’ (Breathing Rate), ‘temp’ (Temperature) and ‘cardioscore’ (Cardio Fitness Score or VO2 Max).
+sleep time series GPS data of outdoor activities For the time interval from ‘2023-02-27’ to ‘2023-03-05’ the ‘log-id’ does not exist!</description>
+    </item>
+    
     <item>
       <title>2023-02-20  to  2023-02-26  ( Fitbit Visualizations )</title>
       <link>https://mlampros.github.io/fitbitVizBlog/2023/02/20/2023-02-20-to-2023-02-26-fitbit-visualizations/</link>
@@ -363,7 +393,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/09/13/2021-09-13-to-2021-09-19-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -372,7 +402,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/09/06/2021-09-06-to-2021-09-12-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -401,7 +431,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/08/16/2021-08-16-to-2021-08-22-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -450,7 +480,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 12 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/07/12/2021-07-12-to-2021-07-18-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -489,7 +519,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/06/07/2021-06-07-to-2021-06-13-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -498,7 +528,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 31 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/05/31/2021-05-31-to-2021-06-06-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -527,7 +557,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/05/10/2021-05-10-to-2021-05-16-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -546,7 +576,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/04/26/2021-04-26-to-2021-05-02-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -555,7 +585,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 19 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/04/19/2021-04-19-to-2021-04-25-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -564,7 +594,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/04/12/2021-04-12-to-2021-04-18-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -573,7 +603,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/04/05/2021-04-05-to-2021-04-11-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -582,7 +612,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/03/29/2021-03-29-to-2021-04-04-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -591,7 +621,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/03/22/2021-03-22-to-2021-03-28-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -600,7 +630,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/03/15/2021-03-15-to-2021-03-21-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>
@@ -609,7 +639,7 @@ Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities <
       <pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://mlampros.github.io/fitbitVizBlog/2021/03/08/2021-03-08-to-2021-03-14-fitbit-visualizations/</guid>
-      <description> heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities </description>
+      <description>heart rate time series heart rate heatmap heart rate variability during sleep time sleep time series GPS data of outdoor activities Leaflet Map of Point Coordinates 3-dimensional Rayshader Map of the Activities 3D plot</description>
     </item>
     
     <item>

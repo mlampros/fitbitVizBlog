@@ -1226,6 +1226,8 @@
           self = this;
       newcanvas.width = this.el.width;
       newcanvas.height = this.el.height;
+      newcanvas.setAttribute("aria-labelledby", 
+        this.el.getAttribute("aria-labelledby"));
       newcanvas.addEventListener("webglcontextrestored",
         this.onContextRestored, false);
       newcanvas.addEventListener("webglcontextlost",
